@@ -5,13 +5,13 @@ A free to use virtual stock simulator
 # To-do
 - [x] Sign up component
 - [x] Sign up backend
-- [ ] Log in component
-- [ ] Log in backend
+- [x] Log in component
+- [x] Log in backend
+- [ ] Stock information Component
+- [ ] Dashboard component
 - [ ] Forgot password
 - [ ] Snackbar
 - [ ] Stock searcher Component
-- [ ] Stock information Component
-- [ ] Dashboard component
 - [ ] Portfolio component
 - [ ] Add Finnhub api
 - [ ] Add Alpha Vantage api
