@@ -2,6 +2,7 @@
 
 A free to use virtual stock simulator
 
+# To-do
 - [x] Sign up component
 - [x] Sign up backend
 - [ ] Log in component
