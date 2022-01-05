@@ -3,7 +3,7 @@ import { Paper, Button, Container, Grid, Typography, Avatar} from '@mui/material
 import LockIcon from '@mui/icons-material/Lock'
 import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch } from 'react-redux'
-import { signup } from '../../actions/auth.js';
+import { signin, signup } from '../../actions/auth.js';
 
 import Field from './Field.js'
 import styles from './Login.module.css'
@@ -26,7 +26,7 @@ const Login = () => {
 		if(isSignup) {
 			dispatch(signup(formData))
 		} else {
-			console.log('hi')
+			dispatch(signin(formData))
 		}
 	}
 
