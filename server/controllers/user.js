@@ -3,13 +3,15 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
+const INITIAL_CASH = 1000000
+
 dotenv.config()
 
 const SECRET = process.env.SECRET
 
 export const signin = async (req, res) => {
     const { email, password } = req.body //Coming from formData
-
+    console.log(email, password)
     try {
         const existingUser = await User.findOne({ email })
 
@@ -21,7 +23,6 @@ export const signin = async (req, res) => {
 
         //If credentials are valid, create a token for the user
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, SECRET, { expiresIn: "1h" })
-        
         //Then send the token to the client/frontend
         res.status(200).json({ result: existingUser, token })
 
@@ -42,7 +43,7 @@ export const signup = async (req, res) => {
 		
 		const hashedPassword = await bcrypt.hash(password, 12)
 
-		const reslt = User.create({email, password: hashedPassword, name: `${firstName} ${lastName}`})
+		const reslt = User.create({email, password: hashedPassword, name: `${firstName} ${lastName}`, cash: INITIAL_CASH, assets: [] })
 
 		const token = jwt.sign({ email: result.email, id: result._id }, SECRET, {expiresIn: "1h"})
 

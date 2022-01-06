@@ -3,7 +3,7 @@ import { AUTH, CREATE_PROFILE } from './constants'
 
 export const signin = (formData) => async(dispatch) => {
 	try {
-		const { data } = api.signIn(formData)
+		const { data } = await api.signIn(formData)
 		dispatch({ type: AUTH, data})
 		window.location.href="/dashboard"
 	} catch (error) {
@@ -14,7 +14,7 @@ export const signin = (formData) => async(dispatch) => {
 export const signup = (formData) => async(dispatch) => {
 
 	try {
-		const { data } = api.signUp(formData)
+		const { data } = await api.signUp(formData)
 		dispatch({ type: AUTH, data})
 		window.location.href="/dashboard"
 
