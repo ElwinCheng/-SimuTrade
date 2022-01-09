@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import User from './models/userModel.js'
 import userRoutes from './routes/userRoutes.js'
+import quoteRoutes from './routes/quoteRoutes.js'
 
 import auth from './middleware/auth.js'
 
@@ -15,7 +16,8 @@ app.use(express.json({ limit: "30mb", extended: true})) // Req.body
 app.use(express.urlencoded({ limit: "30mb", extended: true})) 
 app.use(cors())
 
-app.use('/users', userRoutes);
+app.use('/users', userRoutes)
+app.use('/quotes', quoteRoutes)
 app.use(auth)
 
 const MONGO_URI = process.env.MONGO_URI

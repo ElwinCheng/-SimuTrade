@@ -6,20 +6,24 @@ import Header from './components/Header/Header'
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
+import Dashboard from './components/Dashboard/Dashboard';
+import Stock from './components/Stock/Stocks';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
 
-  const user = localStorage.getItem('user')
+  const user = localStorage.getItem('profile')
   return (
     <div>
-      <BrowserRouter>
       <Header />
+      <BrowserRouter>
         {user && <NavBar />}
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/login" element={<Login />}/>
+          <Route path="/dashboard" element={<Dashboard />}/>
+          <Route path="/stocks" element={<Stock />} />
         </Routes>
       </BrowserRouter>
       <Footer />

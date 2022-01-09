@@ -10,8 +10,15 @@ API.interceptors.request.use((req) => {
     return req
 })
 
+
 export const signIn = (formData) => API.post('/users/signin', formData)
 export const signUp = (formData) => API.post('/users/signup', formData)
 
+export const quote = (symbol) => API.get(`/quotes/quote?symbol=${symbol}`)
+export const query = (query) => API.get(`/quotes/query?q=${query}`)
+
 
 export const createProfile = (newProfile) => API.post('/profiles', newProfile);
+
+
+//export const updateUser = (newData) => API.patch
