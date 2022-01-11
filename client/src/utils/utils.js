@@ -1,0 +1,1 @@
+export const formatHistoricalData = (data) => Object.entries(data['Time Series (Daily)']).map((d, index) => ( { price: d[1]['4. close'], date: d[0]} ) ).reverse()

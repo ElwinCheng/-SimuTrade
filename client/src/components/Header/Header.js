@@ -6,16 +6,18 @@ import styles from './Header.module.css'
 const Header = () => {
 	return (
 		<div>
-			<Grid container justifyContent="center" alignItems="center">
-				<Grid item sm={10}>
-					<p>Paper Stock</p>
+			<div className={styles.wrapper}>
+				<Grid container justifyContent="center" alignItems="center">
+					<Grid item sm={10}>
+						<p>Paper Stock</p>
+					</Grid>
+					<Grid item sm={2}>
+						<Button variant="contained" href="/login">
+							Get Started
+						</Button>
+					</Grid>
 				</Grid>
-				<Grid item sm={2}>
-					<Button variant="contained" href="/login">
-						Get Started
-					</Button>
-				</Grid>
-			</Grid>
+			</div>
 			<hr></hr>
 		</div>
 

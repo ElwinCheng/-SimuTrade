@@ -19,12 +19,14 @@ function App() {
       <Header />
       <BrowserRouter>
         {user && <NavBar />}
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/dashboard" element={<Dashboard />}/>
-          <Route path="/stocks" element={<Stock />} />
-        </Routes>
+        <div class="routes">
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/dashboard" element={<Dashboard />}/>
+            <Route path="/stocks" element={<Stock />} />
+          </Routes>
+        </div>
       </BrowserRouter>
       <Footer />
     </div>

@@ -16,6 +16,7 @@ export const signUp = (formData) => API.post('/users/signup', formData)
 
 export const quote = (symbol) => API.get(`/quotes/quote?symbol=${symbol}`)
 export const query = (query) => API.get(`/quotes/query?q=${query}`)
+export const getDailyHistory = (symbol) => API.get(`/quotes/history?symbol=${symbol}`)
 
 
 export const createProfile = (newProfile) => API.post('/profiles', newProfile);

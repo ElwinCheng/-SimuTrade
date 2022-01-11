@@ -3,11 +3,6 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-export const getQuote = async (req, res) => {
-    const quote = await 
-    res.status(200).json()
-}
-
 export const buy = async (req, res) => {
     const { quantity, symbol, isBuy } = req.body
 

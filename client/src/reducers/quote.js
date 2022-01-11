@@ -1,21 +1,13 @@
-import { UPDATE_SELECTION } from "../actions/constants";
+import { UPDATE_SELECTION, FETCH_INITIAL_HISTORICAL_DATA } from "../actions/constants"
 
 const quoteReducer =(state = { symbol: 'AAPL'}, action) => {
     switch (action.type) {
         case UPDATE_SELECTION:
-            return {...state, symbol: action.payload}
+            return {...state, symbol: action.symbol, historicalData: action.historicalData}
+        case FETCH_INITIAL_HISTORICAL_DATA:
+            console.log(action.payload)
+            return {...state, historicalData: action.payload}
 
-						/*
-            case LOGOUT:
-                localStorage.clear()
-                return {...state, authData: null}
-
-            case UPDATE_USER:
-                localStorage.setItem('profile', JSON.stringify({...action?.data}))
-                // console.log(action?.data)
-                return {...state, authData: action?.data}
-						*/
-        
         default:
             return state
     }
