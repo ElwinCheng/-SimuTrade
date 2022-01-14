@@ -6,8 +6,13 @@ import { LineChart, Line,	XAxis, YAxis, ResponsiveContainer, CartesianGrid, Lege
 const Chart = (props) => {
 	
 	const formatXAxis = (tickItem) => {
-		const date = new Date(tickItem)
+		const date = new Date(tickItem * 1000)
 		return date.toLocaleString('default', { month: 'short'}) + ' ' + date.getDate()
+	}
+
+	const formatTooltip = (tickItem) => {
+		const date = new Date(tickItem * 1000)
+		return date.toLocaleString('default', { month: 'short'}) + ' ' + date.getDate() + ', ' + date.getFullYear()
 	}
 
 	return (
@@ -23,10 +28,10 @@ const Chart = (props) => {
 				}}
 			>
 				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis dataKey="date" tickFormatter={formatXAxis}/>
+				<XAxis dataKey="t" tickFormatter={formatXAxis}/>
 				<YAxis domain={[dataMin => (Math.floor(dataMin*0.98)), dataMax => (Math.floor(dataMax*1.02))]}/>
-				<Tooltip />
-				<Line type="monotone" dataKey="price" stroke="#8884d8" dot={false} strokeWidth={2}/>
+				<Tooltip labelFormatter={formatTooltip} formatter={(price) => price + ' USD'}/>
+				<Line type="monotone" dataKey="c" stroke="#8884d8" dot={false} strokeWidth={2}/>
 			</LineChart>
 	)
 }

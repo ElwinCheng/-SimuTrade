@@ -29,6 +29,22 @@ export const getQuery = async (req, res) => {
 
 export const getDailyHistory = async (req, res) => {
 	try {
+		console.log('hi')
+		const { symbol } = req.query
+		const now = Math.floor(Date.now()/1000)
+		const month = 31*24*60*60
+		const {data} = await FINNHUB_API.get(`/stock/candle?symbol=${symbol}&resolution=D&from=${now-month}&to=${now}&token=${FINNHUB_API_KEY}`)
+		res.status(200).json({ data })
+
+	} catch(error) {
+		res.status(500).json({ message: "Something went wrong"})
+	}
+}
+
+
+/*
+export const getDailyHistory = async (req, res) => {
+	try {
 		const { symbol } = req.query
 		const { data } = await ALPHAVANTAGE_API.get(`/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${ALPHAVANTAGE_API_KEY}`)
 		res.status(200).json({ data })
@@ -38,3 +54,5 @@ export const getDailyHistory = async (req, res) => {
 	}
 
 }
+
+*/

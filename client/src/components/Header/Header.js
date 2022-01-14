@@ -18,7 +18,6 @@ const Header = () => {
 					</Grid>
 				</Grid>
 			</div>
-			<hr></hr>
 		</div>
 
 	)

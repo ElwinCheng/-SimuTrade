@@ -19,7 +19,7 @@ function App() {
       <Header />
       <BrowserRouter>
         {user && <NavBar />}
-        <div class="routes">
+        <div style={{padding: '50px 100px 50px 100px'}}>
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/login" element={<Login />}/>

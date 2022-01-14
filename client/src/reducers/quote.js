@@ -1,12 +1,16 @@
-import { UPDATE_SELECTION, FETCH_INITIAL_HISTORICAL_DATA } from "../actions/constants"
+import { UPDATE_SELECTION, FETCH_INITIAL_HISTORICAL_DATA, GET_QUOTE, FETCH_INITIAL_QUOTE } from "../actions/constants"
 
-const quoteReducer =(state = { symbol: 'AAPL'}, action) => {
+const quoteReducer =(state={ symbol: 'INTC', stock: {c: 0, d: 0, dp: 0, h: 0, o: 0, pc: 0, t: 0}}, action) => {
     switch (action.type) {
         case UPDATE_SELECTION:
-            return {...state, symbol: action.symbol, historicalData: action.historicalData}
+            return {...state, historicalData: action.payload.historicalData, symbol: action.payload.symbol}
         case FETCH_INITIAL_HISTORICAL_DATA:
-            console.log(action.payload)
-            return {...state, historicalData: action.payload}
+            return {...state, historicalData: action.payload.historicalData}
+        case GET_QUOTE:
+            return {...state, stock: action.payload.stock, symbol: action.payload.symbol}
+        case FETCH_INITIAL_QUOTE:
+            return {...state, stock: action.payload.stock, symbol: action.payload.symbol}
+
 
         default:
             return state

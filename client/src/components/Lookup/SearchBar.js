@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TextField, Autocomplete } from '@mui/material'
 import { useDispatch } from 'react-redux'
-import { updateSelection } from '../../actions/quotes'
+import { getQuote, updateSelection } from '../../actions/quotes'
 import * as api from '../../api/index'
 
 const SearchBar = (props) => {
@@ -12,14 +12,16 @@ const SearchBar = (props) => {
 
 	const handleChange = async (e, query) => {
 		setValue(query)
+		if (!query) return
 		const { data: { data: { bestMatches }  } } = await api.query(query)
 		const stockSymbols = bestMatches.map(q => q['1. symbol'])
 		setQueries(stockSymbols)
 	}
 
-	const handleSelect = (e, newValue) => {
+	const handleSelect = (e, symbol) => {
 		if (e.target.tagName !== "LI") return
-		dispatch(updateSelection(newValue))
+		dispatch(getQuote(symbol))
+		dispatch(updateSelection(symbol))
 	}
 
 	return (
