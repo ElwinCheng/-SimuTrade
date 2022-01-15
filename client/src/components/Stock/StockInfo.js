@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Grid } from '@mui/material'
+import { Grid, Radio, RadioGroup, FormControlLabel } from '@mui/material'
 import Chart from '../Chart/Chart'
 import { useDispatch } from 'react-redux'
 import * as api from '../../api'
@@ -18,6 +18,7 @@ const StockInfo = () => {
 	const dailyHistory = useSelector((state) => state.quote.historicalData)
 	const [currentSymbol, setCurrentSymbol] = useState('AAPL')
 	const [seconds, setSeconds] = useState(0)
+	const [period, setPeriod] = useState('1M')
 	//const [stockData, setStockData] = useState()
 	//const [dailyHistory, setDailyHistory] = useState([])
 	const dispatch = useDispatch()
@@ -39,6 +40,8 @@ const StockInfo = () => {
 		dispatch(fetchInitialQuote())
 		dispatch(fetchInitialHistoriclData())
 	}, [])
+
+	const handleChangePeriod = ({target: {value}}) => setPeriod(value)
 
 	/*
 	useEffect(() => {
@@ -78,6 +81,17 @@ const StockInfo = () => {
 					</Grid>
 
 				</Grid>
+				<RadioGroup 
+					row 
+					name="row-radio-buttons-group"
+					value={period}
+					onChange={handleChangePeriod}
+				>
+					<FormControlLabel value="1M" control={<Radio />} label="1M"/>
+					<FormControlLabel value="6M" control={<Radio />} label="6M"/>
+					<FormControlLabel value="1D" control={<Radio />} label="1D"/>
+					<FormControlLabel value="5D" control={<Radio />} label="5D"/>
+				</RadioGroup>
 				<Grid item>
 					<Chart data={dailyHistory}/>
 				</Grid>

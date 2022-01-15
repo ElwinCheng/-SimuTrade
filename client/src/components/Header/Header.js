@@ -5,7 +5,6 @@ import styles from './Header.module.css'
 
 const Header = () => {
 	return (
-		<div>
 			<div className={styles.wrapper}>
 				<Grid container justifyContent="center" alignItems="center">
 					<Grid item sm={10}>
@@ -18,7 +17,6 @@ const Header = () => {
 					</Grid>
 				</Grid>
 			</div>
-		</div>
 
 	)
 }

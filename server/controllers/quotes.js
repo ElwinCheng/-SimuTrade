@@ -30,10 +30,32 @@ export const getQuery = async (req, res) => {
 export const getDailyHistory = async (req, res) => {
 	try {
 		console.log('hi')
-		const { symbol } = req.query
+		const { symbol, period } = req.query
+		console.log(period)
 		const now = Math.floor(Date.now()/1000)
-		const month = 31*24*60*60
-		const {data} = await FINNHUB_API.get(`/stock/candle?symbol=${symbol}&resolution=D&from=${now-month}&to=${now}&token=${FINNHUB_API_KEY}`)
+		let length;
+		switch (period) {
+			case '1Y':
+				length = 365*24*60*60
+				break;
+			case '6M':
+				length = 6*31*24*60*60
+				break;
+			case '1M':
+				length = 31*24*60*60
+				break;
+			case '1D':
+				length = 24*60*60
+				break;
+			case '5D':
+				length = 5*24*60*60
+				break;
+			default:
+				length = 31*24*60*60
+		}
+		console.log(length)
+		const from = now - length
+		const {data} = await FINNHUB_API.get(`/stock/candle?symbol=${symbol}&resolution=D&from=${from}&to=${now}&token=${FINNHUB_API_KEY}`)
 		res.status(200).json({ data })
 
 	} catch(error) {

@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link, Drawer, Toolbar, Divider, List, ListItem, ListItemIcon, ListItemText} from '@mui/material'
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import styles from './NavBar.module.css'
 
 const drawerWidth=200
 
 const NavBar = () => {
 	return (
-		<div>
+		<div className={styles.navbar}>
 			<Drawer
         sx={{
           width: drawerWidth,

@@ -2,9 +2,9 @@ import { UPDATE_SELECTION, FETCH_INITIAL_HISTORICAL_DATA, GET_QUOTE, FETCH_INITI
 import * as api from '../api/index'
 import { formatHistoricalData } from '../utils/utils'
 
-export const updateSelection = (symbol) => async (dispatch) => {
+export const updateSelection = (symbol, period) => async (dispatch) => {
 	try {
-		const { data: {data: {c, t} } } = await api.getDailyHistory(symbol)
+		const { data: {data: {c, t} } } = await api.getDailyHistory(symbol, period)
 		const historicalData = c.map((c, i) => ({c, t: t[i]}))
 		const payload = {historicalData, symbol}
 		dispatch({ type: UPDATE_SELECTION, payload})
@@ -34,7 +34,7 @@ export const fetchInitialQuote = () => async (dispatch) => {
 
 export const fetchInitialHistoriclData = () => async (dispatch) => {
 	try {
-		const {data: {data: {c, t}}} = await api.getDailyHistory('AAPL')
+		const {data: {data: {c, t}}} = await api.getDailyHistory('AAPL', '1M')
 		const historicalData = c.map((c, i) => ({c, t: t[i]}))
 		dispatch({type: FETCH_INITIAL_HISTORICAL_DATA, payload: {historicalData }})
 	} catch (error) {
