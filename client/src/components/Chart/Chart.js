@@ -17,7 +17,7 @@ const Chart = (props) => {
 
 	return (
 		<AreaChart
-			width={700}
+			width={800}
 			height={300}
 			data={props.data}
 			margin={{
@@ -35,7 +35,7 @@ const Chart = (props) => {
 			</defs>
 			<CartesianGrid strokeDasharray="3 3" />
 			<XAxis dataKey="t" tickFormatter={formatXAxis}/>
-			<YAxis domain={[dataMin => (Math.floor(dataMin*0.98)), dataMax => (Math.floor(dataMax*1.02))]}/>
+			<YAxis width={15} domain={[dataMin => (Math.floor(dataMin*0.98)), dataMax => (Math.floor(dataMax*1.02))]}/>
 			<Tooltip labelFormatter={formatTooltip} formatter={(price) => price + ' USD'}/>
 			<Area type="monotone" dataKey="c" stroke="#8884d8" dot={false} strokeWidth={2} fill="url(#colorPrice)"/>
 		</AreaChart>

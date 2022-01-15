@@ -29,9 +29,7 @@ export const getQuery = async (req, res) => {
 
 export const getDailyHistory = async (req, res) => {
 	try {
-		console.log('hi')
 		const { symbol, period } = req.query
-		console.log(period)
 		const now = Math.floor(Date.now()/1000)
 		let length;
 		switch (period) {
@@ -53,7 +51,6 @@ export const getDailyHistory = async (req, res) => {
 			default:
 				length = 31*24*60*60
 		}
-		console.log(length)
 		const from = now - length
 		const {data} = await FINNHUB_API.get(`/stock/candle?symbol=${symbol}&resolution=D&from=${from}&to=${now}&token=${FINNHUB_API_KEY}`)
 		res.status(200).json({ data })

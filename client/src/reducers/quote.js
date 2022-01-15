@@ -1,4 +1,5 @@
-import { UPDATE_SELECTION, FETCH_INITIAL_HISTORICAL_DATA, GET_QUOTE, FETCH_INITIAL_QUOTE } from "../actions/constants"
+import { startSession } from "mongoose"
+import { UPDATE_SELECTION, GET_HISTORICAL_DATA, FETCH_INITIAL_HISTORICAL_DATA, GET_QUOTE, FETCH_INITIAL_QUOTE } from "../actions/constants"
 
 const quoteReducer =(state={ symbol: 'INTC', stock: {c: 0, d: 0, dp: 0, h: 0, o: 0, pc: 0, t: 0}}, action) => {
     switch (action.type) {
@@ -10,7 +11,8 @@ const quoteReducer =(state={ symbol: 'INTC', stock: {c: 0, d: 0, dp: 0, h: 0, o:
             return {...state, stock: action.payload.stock, symbol: action.payload.symbol}
         case FETCH_INITIAL_QUOTE:
             return {...state, stock: action.payload.stock, symbol: action.payload.symbol}
-
+        case GET_HISTORICAL_DATA:
+            return {...state, historicalData: action.payload.historicalData, symbol: action.payload.symbol}
 
         default:
             return state

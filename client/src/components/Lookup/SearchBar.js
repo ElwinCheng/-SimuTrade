@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { getQuote, updateSelection } from '../../actions/quotes'
 import * as api from '../../api/index'
 
-const SearchBar = (props) => {
+const SearchBar = ({period}) => {
 	const [value, setValue] = useState('')
 	const [queries, setQueries] = useState([])
 
@@ -21,7 +21,7 @@ const SearchBar = (props) => {
 	const handleSelect = (e, symbol) => {
 		if (e.target.tagName !== "LI") return
 		dispatch(getQuote(symbol))
-		dispatch(updateSelection(symbol))
+		dispatch(updateSelection(symbol, period))
 	}
 
 	return (

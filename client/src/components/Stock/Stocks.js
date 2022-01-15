@@ -8,7 +8,6 @@ import BuyStock from './BuyStock'
 const Stock = () => {
 	return (
 		<div>
-			<SearchBar />
 			<Grid container>
 				<Grid item xs={8}>
 					<StockInfo />
