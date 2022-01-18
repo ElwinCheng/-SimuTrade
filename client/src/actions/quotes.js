@@ -16,9 +16,10 @@ export const getHistoricalData = (symbol, period) => async (dispatch) => {
 
 export const updateSelection = (symbol, period) => async (dispatch) => {
 	try {
-		const { data: {data: {c, t} } } = await api.getDailyHistory(symbol, period)
+		const { data: { data: {c, t} } } = await api.getDailyHistory(symbol, period)
+		const { data: { data } } = await api.getCompanyProfile(symbol)
 		const historicalData = c.map((c, i) => ({c, t: t[i]}))
-		const payload = {historicalData, symbol}
+		const payload = {historicalData, symbol, company: data}
 		dispatch({ type: UPDATE_SELECTION, payload})
 	} catch(error) {
 		console.log(error)

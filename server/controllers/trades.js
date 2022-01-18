@@ -3,16 +3,34 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-export const buy = async (req, res) => {
-    const { quantity, symbol, isBuy } = req.body
+export const getTrades = async (req, res) => {
+	const { _id } = req.query
+	try {
+		const allTrades = await Trade.find({ investor_id: _id})
+		res.status(200).json(allTrades)
+	} catch (error) {
+		res.status(500).json(error)
+	}
+}
 
-    try {
+export const buyStock = async (req, res) => {
+	const trade = req.body
+	try {
+		const date = new Date()
+		const newTrade = await Trade.create({...trade, date})
+		res.status(200).json(newTrade)
+	} catch (error) {
+		res.status(500).json({ message: "Something went wrong"})
+	}
+}
 
-            const date = new Date()
+export const sellStock = async (req, res) => {
+	const trade = req.body
+	try {
+		const date = new Date()
+		Trade.create({...trade, date})
 
-            Trade.create({isBuy: true,  date })
-
-    } catch (error) {
-        res.status(500).json({ message: "Something went wrong"})
-    }
+	} catch (error) {
+			res.status(500).json({ message: "Something went wrong"})
+	}
 }

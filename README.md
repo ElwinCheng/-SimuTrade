@@ -7,12 +7,12 @@ A free to use virtual stock simulator
 - [x] Sign up backend
 - [x] Log in component
 - [x] Log in backend
-- [ ] Stock information Component
+- [x] Stock information Component
 - [ ] Dashboard component
 - [ ] Forgot password
 - [ ] Snackbar
-- [ ] Stock searcher Component
-- [ ] Portfolio component
-- [ ] Add Finnhub api
-- [ ] Add Alpha Vantage api
-- [ ] Save stock purchases in database
+- [x] Stock searcher Component
+- [x] Portfolio component
+- [x] Add Finnhub api
+- [x] Add Alpha Vantage api
+- [x] Save stock purchases in database

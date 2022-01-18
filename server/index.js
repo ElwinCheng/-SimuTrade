@@ -6,6 +6,7 @@ import cors from 'cors'
 import User from './models/userModel.js'
 import userRoutes from './routes/userRoutes.js'
 import quoteRoutes from './routes/quoteRoutes.js'
+import tradeRoutes from './routes/tradeRoutes.js'
 
 import auth from './middleware/auth.js'
 
@@ -18,6 +19,7 @@ app.use(cors())
 
 app.use('/users', userRoutes)
 app.use('/quotes', quoteRoutes)
+app.use('/trade', tradeRoutes)
 app.use(auth)
 
 const MONGO_URI = process.env.MONGO_URI

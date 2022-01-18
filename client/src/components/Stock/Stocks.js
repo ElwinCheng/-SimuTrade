@@ -9,11 +9,8 @@ const Stock = () => {
 	return (
 		<div>
 			<Grid container>
-				<Grid item xs={8}>
+				<Grid item xs={12}>
 					<StockInfo />
-				</Grid>
-				<Grid item xs={4}>
-					<BuyStock />
 				</Grid>
 
 			</Grid>

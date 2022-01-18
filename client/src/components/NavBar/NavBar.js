@@ -20,10 +20,10 @@ const NavBar = () => {
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
-        <Divider />
+      <h1 style={{padding: '15px'}}>SimuTrade</h1>
+			<Divider />
         <List>
-          {['Dashboard', 'Portfolio', 'Stocks'].map((text, index) => (
+          {['Dashboard', 'Portfolio', 'Stocks' ].map((text, index) => (
             <ListItem button key={text} component="a" href={`/${text.toLowerCase()}`}>
               <ListItemIcon>
 								<DashboardIcon />

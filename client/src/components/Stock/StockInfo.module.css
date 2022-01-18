@@ -5,3 +5,13 @@
 .arrowWrapper {
 	padding: 0px 4px 0px 4px;
 }
+
+.companyInfoWrapper {
+	padding: 10px 0px 10px 0px;
+}
+
+.price {
+	font-size: 60px;
+	padding: 0px;
+	margin: 0px;	
+}

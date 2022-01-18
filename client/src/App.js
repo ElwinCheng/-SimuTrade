@@ -8,12 +8,14 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Dashboard from './components/Dashboard/Dashboard';
 import Stock from './components/Stock/Stocks';
+import Portfolio from './components/Portfolio/Portfolio';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
 
   const user = localStorage.getItem('profile')
+	console.log(user)
   return (
     <div>
       <Header />
@@ -25,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />}/>
             <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="/stocks" element={<Stock />} />
+            <Route path="/portfolio" element={<Portfolio />} />
           </Routes>
         </div>
       </BrowserRouter>

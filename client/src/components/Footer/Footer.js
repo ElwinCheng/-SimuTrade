@@ -5,7 +5,7 @@ const Footer = () => {
 	return (
 		<footer>
 			<div className={styles.footerText}>
-				Made with ♥ by Elwin Cheng
+				SimuTrade | Made with ♥ by Elwin Cheng
 			</div>
 		</footer>
 	)

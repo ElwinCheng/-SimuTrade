@@ -16,7 +16,7 @@ const Login = () => {
 	const dispatch = useDispatch()
 
 	const [formData, setFormData] = useState(initialState)
-	const [isSignup, setIsSignup] = useState(true)
+	const [isSignup, setIsSignup] = useState(false)
 	const [submitted, setSubmitted] = useState(false)
 
 	const handleSubmit =(e) => {
