@@ -76,7 +76,7 @@ const StockInfo = () => {
 					<Grid container item alignItems="flex-start">
 						<Grid container item xs={8} flexDirection={"column"}>
 							<Grid container alignItems="flex-end" item>
-								<h1 className={styles.price}>{`${stockInfo.c}`}</h1>
+								<h1 key={stockInfo.c.toFixed(2)} className={styles.price}>{`${stockInfo.c.toFixed(2)}`}</h1>
 								<h2>USD</h2>
 							</Grid>
 							<Grid container item alignItems="center" color={stockInfo.dp < 0 ? "red" : "green"}>

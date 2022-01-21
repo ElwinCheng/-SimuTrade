@@ -17,9 +17,9 @@ function App() {
   const user = localStorage.getItem('profile')
 	console.log(user)
   return (
-    <div>
-      <Header />
+    <div style={{paddingLeft: user ? '195px' : '0px'}}>
       <BrowserRouter>
+				<Header />
         {user && <NavBar />}
         <div style={{padding: '50px 100px 50px 100px'}}>
           <Routes>

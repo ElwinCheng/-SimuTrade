@@ -12,7 +12,7 @@ const BuyStock = ({isBuy}) => {
 	const user = JSON.parse(localStorage.getItem('profile'))
 
 	const handleChange = ({target}) => {
-		const value = Number(target.value)
+		const value = Math.floor(Number(target.value))
 		if (value < 0) return setQuantity(0)
 		setQuantity(value)
 		//setQuantity(Number(e.target.value))

@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link, Drawer, Toolbar, Divider, List, ListItem, ListItemIcon, ListItemText} from '@mui/material'
+import { Button, Drawer, Toolbar, Divider, List, ListItem, ListItemIcon, ListItemText} from '@mui/material'
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import ShowChartIcon from '@mui/icons-material/ShowChart'; 
 import styles from './NavBar.module.css'
+import logo from '../../img/SimuTrade_logo.png'
 
 const drawerWidth=200
 
@@ -20,7 +22,9 @@ const NavBar = () => {
         variant="permanent"
         anchor="left"
       >
-      <h1 style={{padding: '15px'}}>SimuTrade</h1>
+			<Button href="/dashboard">
+				<img style={{padding: '20px', width: '160px'}} src={logo} alt="SimuTrade"/>
+			</Button>
 			<Divider />
         <List>
           {['Dashboard', 'Portfolio', 'Stocks' ].map((text, index) => (

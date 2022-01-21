@@ -14,4 +14,9 @@
 	font-size: 60px;
 	padding: 0px;
 	margin: 0px;	
+	/*
+	transform: translate(120px, 50%);
+	transition-duration: 2s;
+	*/
+
 }

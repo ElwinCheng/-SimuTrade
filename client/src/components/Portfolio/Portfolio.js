@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, Card, CardHeader, Box, Table, TableHead, TableBody, TableRow, TableCell, Tooltip,  TableSortLabel } from '@mui/material'
 import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -10,10 +11,13 @@ import * as api from '../../api'
 const Portfolio = () => {
 	const user = JSON.parse(localStorage.getItem('profile'))
 	const [trades, setTrades] = useState([])
+	const navigate = useNavigate()
+
+	if (!user) navigate('/login')
 
 	useEffect(() => {
 		async function fetchTrades() {
-			const { data } = await api.getTrades(user.result._id)
+			const { data } = await api.getTrades(user?.result?._id)
 			setTrades(data)
 		}
 		fetchTrades()

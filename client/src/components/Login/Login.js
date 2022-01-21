@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import { Paper, Button, Container, Grid, Typography, Avatar} from '@mui/material'
+import * as React from 'react'
+import { useState } from 'react'
+import { Snackbar, Paper, Button, Container, Grid, Typography, Avatar} from '@mui/material'
+import MuiAlert from '@mui/material/Alert'
 import LockIcon from '@mui/icons-material/Lock'
 import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch } from 'react-redux'
@@ -8,6 +10,9 @@ import { signin, signup } from '../../actions/auth.js';
 import Field from './Field.js'
 import styles from './Login.module.css'
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const initialState ={ firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
 
@@ -18,6 +23,15 @@ const Login = () => {
 	const [formData, setFormData] = useState(initialState)
 	const [isSignup, setIsSignup] = useState(false)
 	const [submitted, setSubmitted] = useState(false)
+	const [open, setOpen] = useState(false)
+
+	const handleOpen = () => {
+		setOpen(true)
+	}
+
+	const handleClose = (event, reason) => {
+		setOpen(false)
+	}
 
 	const handleSubmit =(e) => {
 		setSubmitted(true)
@@ -26,7 +40,7 @@ const Login = () => {
 		if(isSignup) {
 			dispatch(signup(formData))
 		} else {
-			dispatch(signin(formData))
+			dispatch(signin(formData, handleOpen))
 		}
 	}
 
@@ -75,6 +89,12 @@ const Login = () => {
 					</form>
 				</Paper>
 				
+				<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+					<Alert onClose={handleClose} severity="error">
+						Error login
+					</Alert>
+
+				</Snackbar>
 			</Container>
 	)
 }
