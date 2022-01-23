@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Grid, Radio, RadioGroup, FormControlLabel, Avatar } from '@mui/material'
+import { Card, Grid, Radio, RadioGroup, FormControlLabel, Avatar } from '@mui/material'
 import Chart from '../Chart/Chart'
 import { useDispatch } from 'react-redux'
 import * as api from '../../api'
@@ -66,11 +66,12 @@ const StockInfo = () => {
 	//const [symbol, setSymbol] = useState('AAPL')
 	return (
 		<Grid container direction="row">
-			<Grid item xs={7}>
+			<Grid sx={{borderRight: '1px solid grey'}} item xs={7}>
+
 				<SearchBar period={period}/>
-				<Grid container direction="row">
+				<Grid sx={{padding: '20px 0px 10px 0px'}} container direction="row">
 					<Avatar alt="Company Logo" src={`https://finnhub.io/api/logo?symbol=${symbol}`}></Avatar>
-					<h1>{company.name}</h1>
+					<h1 style={{padding: '0px 0px 0px 10px'}} >{company.name}</h1>
 				</Grid>
 				<Grid container flexDirection={"column"} alignItems="flex-start">
 					<Grid container item alignItems="flex-start">
@@ -81,7 +82,7 @@ const StockInfo = () => {
 							</Grid>
 							<Grid container item alignItems="center" color={stockInfo.dp < 0 ? "red" : "green"}>
 								<Grid item>
-									<h2>{`${Number(stockInfo.dp) < 0 ? "" : "+"}${stockInfo.d} (${Number(stockInfo.dp) < 0 ? "" : "+"}${stockInfo.dp.toFixed(2)}%)`}</h2>
+									<h2>{`${Number(stockInfo.dp) < 0 ? "" : "+"}${stockInfo.d.toFixed(2)} (${Number(stockInfo.dp) < 0 ? "" : "+"}${stockInfo.dp.toFixed(2)}%)`}</h2>
 								</Grid>
 								<Grid className={styles.arrowWrapper} item>
 									<h2>
@@ -114,8 +115,6 @@ const StockInfo = () => {
 						<Chart data={dailyHistory}/>
 					</Grid>
 				</Grid>
-				
-
 			</Grid>	
 			<Grid item xs={5}>
 				<BuyStock />

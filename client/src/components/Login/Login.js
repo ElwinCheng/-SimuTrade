@@ -24,14 +24,22 @@ const Login = () => {
 	const [isSignup, setIsSignup] = useState(false)
 	const [submitted, setSubmitted] = useState(false)
 	const [open, setOpen] = useState(false)
+	const [success, setSuccess] = useState(false)
 
-	const handleOpen = () => {
+	const handleSuccess = () => {
+		setSuccess(true)
 		setOpen(true)
+	}
+
+	const handleFail = () => {
+		setOpen(true)
+		setSubmitted(false)
 	}
 
 	const handleClose = (event, reason) => {
 		setOpen(false)
 	}
+
 
 	const handleSubmit =(e) => {
 		setSubmitted(true)
@@ -40,7 +48,7 @@ const Login = () => {
 		if(isSignup) {
 			dispatch(signup(formData))
 		} else {
-			dispatch(signin(formData, handleOpen))
+			dispatch(signin(formData, handleFail, handleSuccess))
 		}
 	}
 
@@ -58,10 +66,10 @@ const Login = () => {
 	return (
 			<Container component="main" maxWidth="xs">
 				<Paper className={styles.paper} elevation={2}>
-					<Avatar className={styles.lock}>
-						<LockIcon />
+					<Avatar sx={{bgcolor: 'blue', margin: '10px'}} className={styles.lock}>
+						<LockIcon/>
 					</Avatar>
-					<Typography component="h1">{ isSignup ? 'Sign up' : 'Sign in'}</Typography>
+					<h2 style={{padding: '10px 10px 30px 10px'}}>{ isSignup ? 'Sign Up' : 'Sign In'}</h2>
 					<form onSubmit={handleSubmit}>
 						<Grid container spacing={2}>
 							{isSignup &&
@@ -76,7 +84,7 @@ const Login = () => {
 						</Grid>
 						<div className={styles.buttons}>
 							<div>
-								<Button type="submit" >{ submitted ? <CircularProgress /> : isSignup ? 'Sign up' : 'Sign in'}</Button>
+								<Button variant="contained" type="submit" >{ submitted ? <CircularProgress /> : isSignup ? 'Sign up' : 'Sign in'}</Button>
 							</div>
 						</div>
 						<Grid container justifyContent="center">
@@ -89,9 +97,9 @@ const Login = () => {
 					</form>
 				</Paper>
 				
-				<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-					<Alert onClose={handleClose} severity="error">
-						Error login
+				<Snackbar sx={{width: '100%ft7g '}} open={open} autoHideDuration={6000} onClose={handleClose}>
+					<Alert onClose={handleClose} sx={{width: '100%'}} severity={success ? "success": "error"}>
+						{success ? "Log in Successful" : "Invalid Credentials"}
 					</Alert>
 
 				</Snackbar>

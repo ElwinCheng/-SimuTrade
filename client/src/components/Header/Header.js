@@ -45,7 +45,9 @@ const Header = () => {
 			<div className={styles.wrapper}>
 				<Grid container justifyContent="center" alignItems="flex-end">
 					<Grid item sm={10}>
-						{user ? <></> : <img style={{width: '160px'}} src={logo} alt="logo"/>}
+						<Button href="/">
+							{user ? <></> : <img style={{width: '160px'}} src={logo} alt="logo"/>}
+						</Button>
 					</Grid>
 					<Grid item sm={2}>
 						<Button variant="contained" onClick={handleClick}>

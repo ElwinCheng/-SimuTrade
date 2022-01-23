@@ -14,12 +14,7 @@ const Stock = () => {
 	
 	return (
 		<div>
-			<Grid container>
-				<Grid item xs={12}>
-					<StockInfo />
-				</Grid>
-
-			</Grid>
+			<StockInfo />
 		</div>
 	)
 }

@@ -12,14 +12,22 @@ const Dashboard = () => {
 	const navigate = useNavigate()
 
 	if (!user) {
-		navigate('/login')
+		window.location.href="/login"
 	}
-	console.log(user)
 
+	/*
+	useEffect( () => {
+		if (!user) {
+			navigate('/login')
+		}
+		
+	}, [])
+
+	*/
 	return (
 		<Grid container spacing={3}>
 			 <Grid item lg={4} sm={6} xl={3} xs={12}>
-					<Cash cash={user.result.cash}/>
+					<Cash cash={user?.result?.cash}/>
 			 </Grid>
 			 <Grid item lg={4} sm={6} xl={4} xs={12}>
 				 <Portfolio />

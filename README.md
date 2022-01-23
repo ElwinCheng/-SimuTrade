@@ -10,7 +10,7 @@ A free to use virtual stock simulator
 - [x] Stock information Component
 - [ ] Dashboard component
 - [ ] Forgot password
-- [ ] Snackbar
+- [x] Snackbar
 - [x] Stock searcher Component
 - [x] Portfolio component
 - [x] Add Finnhub api

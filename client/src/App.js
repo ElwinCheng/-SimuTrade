@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Dashboard from './components/Dashboard/Dashboard';
 import Stock from './components/Stock/Stocks';
+import NotFound from './components/NotFound/NotFound';
 import Portfolio from './components/Portfolio/Portfolio';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -28,10 +29,11 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="/stocks" element={<Stock />} />
             <Route path="/portfolio" element={<Portfolio />} />
+						<Route path="*" element={<NotFound />} />
           </Routes>
         </div>
-      </BrowserRouter>
       <Footer />
+      </BrowserRouter>
     </div>
       /*
     <div className="App">

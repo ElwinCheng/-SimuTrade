@@ -29,7 +29,7 @@ const BuyStock = ({isBuy}) => {
 	}
 
 	return (
-		<form>
+		<form style={{padding: '0px 0px 0px 70px'}}>
 			<Field label="Quantity" type="number" value={quantity} handleChange={handleChange}/>
 			<Grid sx={{padding: '20px 0px 10px 0px'}} direction="row" container >
 				<Grid container item xs={6} justifyContent='center'>
