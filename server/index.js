@@ -22,6 +22,8 @@ app.use('/quotes', quoteRoutes)
 app.use('/trade', tradeRoutes)
 app.use(auth)
 
+app.get('/', (req, res) => { res.send('Hello from Express!')
+
 const MONGO_URI = process.env.MONGO_URI
 const PORT = process.env.PORT || 2000
 
