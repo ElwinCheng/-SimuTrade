@@ -2,5 +2,9 @@
 	"engines": {
 			"node": "16.x",
 			"npm": "8.x"
+	},
+
+	"scripts": {
+		"start": "nodemon index.js"
 	}
 }
