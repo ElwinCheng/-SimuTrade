@@ -1,4 +1,3 @@
-import { startSession } from "mongoose"
 import { UPDATE_SELECTION, GET_HISTORICAL_DATA, FETCH_INITIAL_HISTORICAL_DATA, GET_QUOTE, FETCH_INITIAL_QUOTE } from "../actions/constants"
 
 const quoteReducer =(state={ company: { name: 'Apple Inc'}, symbol: 'AAPL', stock: {c: 0, d: 0, dp: 0, h: 0, o: 0, pc: 0, t: 0}}, action) => {
