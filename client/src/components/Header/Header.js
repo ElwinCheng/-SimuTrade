@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Button, Grid } from '@mui/material'
 import decode from 'jwt-decode'
-import logo from '../../img/SimuTrade_logo.png'
+import logo from '../../img/simutrade_logo_transparent.png'
 
 import styles from './Header.module.css'
 

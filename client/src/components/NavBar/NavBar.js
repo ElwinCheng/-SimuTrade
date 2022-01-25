@@ -4,7 +4,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard'
 import ShowChartIcon from '@mui/icons-material/ShowChart'
 import SearchIcon from '@mui/icons-material/Search'
 import styles from './NavBar.module.css'
-import logo from '../../img/SimuTrade_logo.png'
+import logo from '../../img/simutrade_logo_transparent.png'
 
 const drawerWidth=200
 
