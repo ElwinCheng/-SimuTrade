@@ -6,7 +6,7 @@ export const signin = (formData, handleFail, handleSuccess) => async(dispatch) =
 		const { data } = await api.signIn(formData)
 		handleSuccess()
 		dispatch({ type: AUTH, data})
-		window.location.href="/dashboard"
+		window.location.href="/stocks"
 	} catch (error) {
 		handleFail()
 		console.log(error)
