@@ -17,10 +17,13 @@ export const signup = (formData) => async(dispatch) => {
 
 	try {
 		const { data } = await api.signUp(formData)
+
+		console.log('hello')
 		dispatch({ type: AUTH, data})
-		window.location.href="/dashboard"
+		window.location.href="/stocks"
 
     } catch (error) {
+			console.log('by')
 			console.log(error)
     }
 }
