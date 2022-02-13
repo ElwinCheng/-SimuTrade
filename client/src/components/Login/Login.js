@@ -1,20 +1,17 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Snackbar, Paper, Button, Container, Grid, Typography, Avatar} from '@mui/material'
-import MuiAlert from '@mui/material/Alert'
 import LockIcon from '@mui/icons-material/Lock'
 import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch } from 'react-redux'
 import { signin, signup } from '../../actions/auth.js';
+import Alert from '../Snackbar/Alert.js';
 
 import Field from './Field.js'
 import styles from './Login.module.css'
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
-const initialState ={ firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
+const initialState ={ firstName: '', lastName: '', email: 'admin@admin.com', password: 'admin', confirmPassword: ''}
 
 const Login = () => {
 
@@ -66,10 +63,12 @@ const Login = () => {
 	return (
 			<Container component="main" maxWidth="xs">
 				<Paper className={styles.paper} elevation={2}>
-					<Avatar sx={{bgcolor: 'blue', margin: '10px'}} className={styles.lock}>
+					<Avatar sx={{bgcolor: '#1976d2', margin: '10px'}} className={styles.lock}>
 						<LockIcon/>
 					</Avatar>
 					<h2 style={{padding: '10px 10px 30px 10px'}}>{ isSignup ? 'Sign Up' : 'Sign In'}</h2>
+					<p style={{ margin: '0px 0px 10px 0px', alignSelf: 'flex-start', fontSize: '12px'}}>email: <strong>admin@admin.com</strong> </p>
+					<p style={{ margin: '0px 0px 15px 0px', alignSelf: 'flex-start', fontSize: '12px'}}>password: <strong>admin</strong></p>
 					<form onSubmit={handleSubmit}>
 						<Grid container spacing={2}>
 							{isSignup &&
@@ -101,7 +100,6 @@ const Login = () => {
 					<Alert onClose={handleClose} sx={{width: '100%'}} severity={success ? "success": "error"}>
 						{success ? "Log in Successful" : "Invalid Credentials"}
 					</Alert>
-
 				</Snackbar>
 			</Container>
 	)

@@ -24,16 +24,10 @@ const StockInfo = () => {
 	const [seconds, setSeconds] = useState(0)
 	const [period, setPeriod] = useState('1M')
 	const [companyProfile, setCompanyProfile] = useState('Apple Inc')
-	//const [stockData, setStockData] = useState()
-	//const [dailyHistory, setDailyHistory] = useState([])
 	const dispatch = useDispatch()
 
 	const fetchQuote = async () => {
 		dispatch(getQuote(symbol))
-		/*
-		const { data: { data } } = await api.quote(symbol)
-		setStockInfo(data)
-		*/
 	}
 	useEffect(() => {
 		console.log(symbol)
@@ -78,7 +72,7 @@ const StockInfo = () => {
 						<Grid container item xs={8} flexDirection={"column"}>
 							<Grid container alignItems="flex-end" item>
 								<h1 key={stockInfo.c.toFixed(2)} className={styles.price}>{`${stockInfo.c.toFixed(2)}`}</h1>
-								<h2>USD</h2>
+								<h2 style={{margin: '0px 0px 8px 5px'}}>USD</h2>
 							</Grid>
 							<Grid container item alignItems="center" color={stockInfo.dp < 0 ? "red" : "green"}>
 								<Grid item>

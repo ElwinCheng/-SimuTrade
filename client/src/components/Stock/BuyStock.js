@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import Field from '../Login/Field'
-import { Button, Grid } from '@mui/material'
+import { Button, Grid, Snackbar } from '@mui/material'
 import { useSelector } from 'react-redux'
 import * as api from '../../api'
+import Alert from '../Snackbar/Alert'
 
 const BuyStock = ({isBuy}) => {
 	const [quantity, setQuantity] = useState(0)
@@ -10,6 +11,8 @@ const BuyStock = ({isBuy}) => {
 	const stockInfo = useSelector((state) => state.quote.stock)
 	const symbol = useSelector((state) => state.quote.symbol)
 	const user = JSON.parse(localStorage.getItem('profile'))
+	const [open, setOpen] = useState(false)
+	const [success, setSuccess] = useState(true)
 
 	const handleChange = ({target}) => {
 		const value = Math.floor(Number(target.value))
@@ -18,12 +21,17 @@ const BuyStock = ({isBuy}) => {
 		//setQuantity(Number(e.target.value))
 	}
 
+	const handleClose = (event, reason) => {
+		setOpen(false)
+	}
+
 	const handleClick = (e) => {
 		e.preventDefault()
 		if (quantity === 0) return alert('Value must be greater than 0')
 		const date = new Date()
 		const tradeData = {isBuy: e.target.value === 'buy', symbol, quantity, price: stockInfo.c, date, investor_id: user.result._id}
 		api.buyStock(tradeData)
+		setOpen(true)
 		//console.log({isBuy: e.target.value === 'buy', symbol, quantity, price: stockInfo.c*quantity, date, investor_id: user._id})
 		//api.buyStock({isBuy, symbol, quantity, price: stockInfo.c, date, investor_id: user._id})
 	}
@@ -43,7 +51,12 @@ const BuyStock = ({isBuy}) => {
 					</Button>
 				</Grid>
 			</Grid>
-				<h1>{`Total value: ${(stockInfo.c * quantity).toFixed(2)}`}</h1>
+			<h1>{`Total value: ${(stockInfo.c * quantity).toFixed(2)}`}</h1>
+			<Snackbar sx={{width: '100%ft7g '}} open={open} autoHideDuration={6000} onClose={handleClose}>
+				<Alert onClose={handleClose} sx={{width: '100%'}} severity={success ? "success": "error"}>
+					{success ? `${quantity} ${symbol} stock${quantity === 1 ? "" : "s"} successfully purchased` : "Invalid Credentials"}
+				</Alert>
+			</Snackbar>
 		</form>
 	)
 }
