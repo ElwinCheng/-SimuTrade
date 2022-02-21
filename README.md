@@ -2,6 +2,8 @@
 
 A free to use virtual stock simulator
 
+## [https://simutrade.netlify.app/](https://simutrade.netlify.app/) 
+
 ## Key Features
 * Authentication using Jsonwebtoken
 * Stock search up
