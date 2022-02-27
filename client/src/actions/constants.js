@@ -8,4 +8,6 @@ export const GET_QUOTE = "GET_QUOTE"
 export const FETCH_INITIAL_QUOTE = "FETCH_INITIAL_QUOTE"
 export const GET_HISTORICAL_DATA = "GET_HISTORICAL_DATA"
 export const LOGOUT = "LOGOUT"
+export const FETCH_TRADES = "FETCH_TRADES"
+export const UPDATE_CASH = "UPDATE_CASH"
 

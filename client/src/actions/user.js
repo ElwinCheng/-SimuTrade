@@ -1,10 +1,11 @@
 import * as api from '../api/index'
-import { LOAD_USER, UPDATE_USER } from './constants'
+import { LOAD_USER, UPDATE_USER, } from './constants'
 
 export const loadUser = (userData) => {
-	return { type: LOAD_USER, cash: userData.result.cash, assets: userData.result.assets}
+	return { type: LOAD_USER, payload: { cash: userData.result.cash, assets: userData.result.assets } }
 }
 
+/*
 export const updateUser = (data) => async(dispatch) => {
 	try {
 		const { newUserState } = await api.updateUser(data)
@@ -13,3 +14,4 @@ export const updateUser = (data) => async(dispatch) => {
 			console.log(error)
 	}
 }
+*/

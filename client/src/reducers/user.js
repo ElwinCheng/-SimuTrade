@@ -1,9 +1,11 @@
-import { LOAD_USER } from '../actions/constants'
+import { LOAD_USER, UPDATE_CASH } from '../actions/constants'
 
-const userReducer =(state = {authData: null}, action) => {
+const userReducer =(state = {authData: null, cash: 1000}, action) => {
     switch (action.type) {
         case LOAD_USER:
-            return {...state, ...action.data}
+					console.log(action.payload)
+					console.log('turtle')
+					return {...state, cash: 10000}
 
 						/*
             case LOGOUT:

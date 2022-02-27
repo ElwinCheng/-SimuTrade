@@ -9,6 +9,10 @@ dotenv.config()
 
 const SECRET = process.env.SECRET
 
+export const updateUser = async (req, res) => {
+	
+}
+
 export const signin = async (req, res) => {
 	const { email, password } = req.body //Coming from formData
 	try {

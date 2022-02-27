@@ -27,7 +27,7 @@ const Dashboard = () => {
 	return (
 		<Grid container spacing={3}>
 			 <Grid item lg={4} sm={6} xl={3} xs={12}>
-					<Cash cash={user?.result?.cash}/>
+					<Cash cash={user?.result?.cash.toFixed(2)}/>
 			 </Grid>
 			 <Grid item lg={4} sm={6} xl={4} xs={12}>
 				 <Portfolio />

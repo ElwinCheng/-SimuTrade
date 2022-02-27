@@ -1,10 +1,14 @@
 import * as api from '../api/index'
-import { AUTH, CREATE_PROFILE } from './constants'
+import { LOAD_USER, AUTH, CREATE_PROFILE } from './constants' 
+import { loadUser } from './user'
+
 
 export const signin = (formData, handleFail, handleSuccess) => async(dispatch) => {
 	try {
 		const { data } = await api.signIn(formData)
+		console.log(data)
 		handleSuccess()
+		//dispatch({ type: LOAD_USER, payload: data.result.cash}) why only one dispatch works?
 		dispatch({ type: AUTH, data})
 		window.location.href="/stocks"
 	} catch (error) {

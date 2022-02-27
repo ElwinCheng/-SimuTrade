@@ -18,6 +18,7 @@ const Portfolio = () => {
 	useEffect(() => {
 		async function fetchTrades() {
 			const { data } = await api.getTrades(user?.result?._id)
+			console.log(data);
 			setTrades(data)
 		}
 		fetchTrades()

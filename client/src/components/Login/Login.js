@@ -67,7 +67,7 @@ const Login = () => {
 						<LockIcon/>
 					</Avatar>
 					<h2 style={{padding: '10px 10px 30px 10px'}}>{ isSignup ? 'Sign Up' : 'Sign In'}</h2>
-					<p style={{ margin: '0px 0px 10px 0px', alignSelf: 'flex-start', fontSize: '12px'}}>email: <strong>admin@admin.com</strong> </p>
+					<p style={{ margin: '0px 0px 10px 0px', alignSelf: 'flex-start', fontSize: '12px'}}>email: <strong>admin@gmail.com</strong> </p>
 					<p style={{ margin: '0px 0px 15px 0px', alignSelf: 'flex-start', fontSize: '12px'}}>password: <strong>admin</strong></p>
 					<form onSubmit={handleSubmit}>
 						<Grid container spacing={2}>
