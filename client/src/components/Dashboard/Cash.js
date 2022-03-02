@@ -21,7 +21,7 @@ const Cash = (props) => (
             color="textPrimary"
             variant="h4"
           >
-						{props.cash}
+						{props?.cash}
           </Typography>
         </Grid>
         <Grid item>

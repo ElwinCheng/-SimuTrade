@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Button, Grid } from '@mui/material'
 import decode from 'jwt-decode'
@@ -8,21 +8,24 @@ import logo from '../../img/simutrade_logo_transparent.png'
 import styles from './Header.module.css'
 
 const Header = () => {
+	const user = useSelector(state => state?.auth?.authData)
 	const location = useLocation()
-	const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+	//const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
 	const navigate = useNavigate()
 
 	const dispatch = useDispatch()
 
+	/*
 	useEffect(() => {
 		setUser(JSON.parse(localStorage.getItem('profile')))
 	}, [location])
+	*/
 
 
 	const logout =() => {
 		dispatch({ type: 'LOGOUT' })
 		navigate('/')
-		setUser(null)
+		//setUser(null)
 		window.location.reload(false);
 	}  
 

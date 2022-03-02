@@ -10,7 +10,7 @@ export const signin = (formData, handleFail, handleSuccess) => async(dispatch) =
 		handleSuccess()
 		//dispatch({ type: LOAD_USER, payload: data.result.cash}) why only one dispatch works?
 		dispatch({ type: AUTH, data})
-		window.location.href="/stocks"
+		//window.location.href="/stocks"
 	} catch (error) {
 		handleFail()
 		console.log(error)

@@ -11,11 +11,14 @@ import Stock from './components/Stock/Stocks';
 import NotFound from './components/NotFound/NotFound';
 import Portfolio from './components/Portfolio/Portfolio';
 
+import { useSelector } from 'react-redux';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
+	const user = useSelector((state) => state?.auth?.authData)
 
-  const user = localStorage.getItem('profile')
+  //const user = localStorage.getItem('profile')
 	console.log(user)
   return (
     <div style={{paddingLeft: user ? '195px' : '0px'}}>

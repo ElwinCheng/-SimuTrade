@@ -5,6 +5,7 @@ import LockIcon from '@mui/icons-material/Lock'
 import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch } from 'react-redux'
 import { signin, signup } from '../../actions/auth.js';
+import { useNavigate } from 'react-router-dom'
 import Alert from '../Snackbar/Alert.js';
 
 import Field from './Field.js'
@@ -16,6 +17,7 @@ const initialState ={ firstName: '', lastName: '', email: 'admin@admin.com', pas
 const Login = () => {
 
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	const [formData, setFormData] = useState(initialState)
 	const [isSignup, setIsSignup] = useState(false)
@@ -26,6 +28,7 @@ const Login = () => {
 	const handleSuccess = () => {
 		setSuccess(true)
 		setOpen(true)
+		navigate('/stocks')
 	}
 
 	const handleFail = () => {

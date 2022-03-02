@@ -5,10 +5,13 @@ import ShowChartIcon from '@mui/icons-material/ShowChart'
 import SearchIcon from '@mui/icons-material/Search'
 import styles from './NavBar.module.css'
 import logo from '../../img/simutrade_logo_transparent.png'
+import { useNavigate } from 'react-router-dom'
 
 const drawerWidth=200
 
 const NavBar = () => {
+	const navigate = useNavigate();
+
 	return (
 		<div className={styles.navbar}>
 			<Drawer
@@ -20,27 +23,26 @@ const NavBar = () => {
             boxSizing: 'border-box',
           },
         }}
-        variant="permanent"
-        anchor="left"
+        variant="permanent" anchor="left"
       >
-			<Button href="/dashboard">
+			<Button onClick={() => navigate('/dashboard')}>
 				<img style={{padding: '20px', width: '160px'}} src={logo} alt="SimuTrade"/>
 			</Button>
 			<Divider />
         <List>
-					<ListItem button key="dashboard" component="a" href="dashboard">
+					<ListItem button key="dashboard" component="a" onClick={() => navigate('/dashboard')}>
 						<ListItemIcon>
 							<DashboardIcon />
 						</ListItemIcon>
 						<ListItemText primary="Dashboard" />
 					</ListItem>
-					<ListItem button key="portfolio" component="a" href="portfolio">
+					<ListItem button key="portfolio" component="a" onClick={() => navigate('/portfolio')}>
 						<ListItemIcon>
 							<ShowChartIcon />
 						</ListItemIcon>
 						<ListItemText primary="Portfolio" />
 					</ListItem>
-					<ListItem button key="stocks" component="a" href="stocks">
+					<ListItem button key="stocks" component="a" onClick={() => navigate('/stocks')}>
 						<ListItemIcon>
 							<SearchIcon />
 						</ListItemIcon>
