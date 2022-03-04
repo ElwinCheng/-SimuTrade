@@ -31,8 +31,8 @@ const StockInfo = () => {
 	}
 	useEffect(() => {
 		console.log(symbol)
-		const timer = setInterval(fetchQuote,3000)
-		return() => clearTimeout(timer)
+		const timer = setInterval(fetchQuote,5000)
+		return () => clearTimeout(timer)
 	}, [symbol])
 
 	useEffect(() => {

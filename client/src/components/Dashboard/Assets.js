@@ -1,8 +1,10 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PeopleIcon from '@mui/icons-material/PeopleOutlined';
+import AssetValue from '../Assets/AssetValue';
 
 const Assets = (props) => (
+	
   <Card {...props}>
     <CardContent>
       <Grid
@@ -16,13 +18,13 @@ const Assets = (props) => (
             gutterBottom
             variant="overline"
           >
-						Total Assets
+						Total Assets Value
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-						{props.assets}
+						<AssetValue />
           </Typography>
         </Grid>
         <Grid item>

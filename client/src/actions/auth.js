@@ -6,6 +6,21 @@ import { loadUser } from './user'
 export const signin = (formData, handleFail, handleSuccess) => async(dispatch) => {
 	try {
 		const { data } = await api.signIn(formData)
+		const { data: tradeData } = await api.getTrades(data.result._id)
+		const assets = {};
+		for (let i = 0; i < tradeData.length; i++) {
+			if (tradeData[i].symbol in assets) {
+				if (tradeData[i].isBuy){
+					assets[tradeData[i].symbol] += tradeData[i].quantity
+				} else {
+					assets[tradeData[i].symbol] -= tradeData[i].quantity
+				}
+			} else {
+				assets[tradeData[i].symbol] = tradeData[i].quantity
+			}
+		}
+		console.log(assets)
+		data.assets = assets
 		console.log(data)
 		handleSuccess()
 		//dispatch({ type: LOAD_USER, payload: data.result.cash}) why only one dispatch works?

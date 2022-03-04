@@ -26,11 +26,11 @@ const Dashboard = () => {
 					<Cash cash={user?.result?.cash?.toFixed(2)}/>
 			 </Grid>
 			 <Grid item lg={4} sm={6} xl={4} xs={12}>
-				 <Portfolio />
-			 </Grid>
-			 <Grid item lg={4} sm={6} xl={4} xs={12}>
 				 <Assets />
 			</Grid>
+			 <Grid item lg={4} sm={6} xl={4} xs={12}>
+				 <Portfolio />
+			 </Grid>
 		</Grid>
 	)	
 }

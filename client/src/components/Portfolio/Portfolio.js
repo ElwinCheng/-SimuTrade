@@ -4,29 +4,45 @@ import { Button, Card, CardHeader, Box, Table, TableHead, TableBody, TableRow, T
 import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import * as api from '../../api'
+import { useSelector } from 'react-redux'
+import AssetValue from '../Assets/AssetValue'
 
 
 // sign up aand get a free amazon stock
 
 const Portfolio = () => {
 	const user = JSON.parse(localStorage.getItem('profile'))
+	const assets = useSelector(state => state?.auth?.authData?.assets);
 	const [trades, setTrades] = useState([])
 	const navigate = useNavigate()
+	const [assetValue, setAssetValue] = useState(0)
 
 	if (!user) navigate('/login')
+
+	const getAssetsValue = async () => {
+		let value = 0
+		for (const [symbol, quantity] of Object.entries(assets)) {
+			const { data: { data } } = await api.quote(symbol)
+			value += data.c * quantity
+		}
+		setAssetValue(value)
+	}
 
 	useEffect(() => {
 		async function fetchTrades() {
 			const { data } = await api.getTrades(user?.result?._id)
-			console.log(data);
+			//console.log(data);
 			setTrades(data)
+			await getAssetsValue();
+			//setAssetValue(value)
 		}
 		fetchTrades()
-		console.log(trades)
+		//console.log(trades)
 	}, [])
 
 	return (
 		<Card >
+		<AssetValue message="Portfolio value: USD$ "/>
     <CardHeader title="All Trades" />
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800 }}>

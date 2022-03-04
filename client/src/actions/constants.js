@@ -10,4 +10,5 @@ export const GET_HISTORICAL_DATA = "GET_HISTORICAL_DATA"
 export const LOGOUT = "LOGOUT"
 export const FETCH_TRADES = "FETCH_TRADES"
 export const UPDATE_CASH = "UPDATE_CASH"
+export const LOAD_AUTH = "LOAD_AUTH"
 

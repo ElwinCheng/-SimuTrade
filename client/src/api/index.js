@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-//const API = axios.create({ baseURL: 'http://localhost:2000'})
-const API = axios.create({ baseURL: 'https://simutrade.herokuapp.com'})
+const API = axios.create({ baseURL: 'http://localhost:2000'})
+//const API = axios.create({ baseURL: 'https://simutrade.herokuapp.com'})
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')) {
@@ -14,6 +14,7 @@ API.interceptors.request.use((req) => {
 
 export const signIn = (formData) => API.post('/users/signin', formData)
 export const signUp = (formData) => API.post('/users/signup', formData)
+export const getUserStockValue = (_id) => API.get(`/users/assets?_id=${_id}`)
 
 
 export const quote = (symbol) => API.get(`/quotes/quote?symbol=${symbol}`)

@@ -8,7 +8,9 @@ import logo from '../../img/simutrade_logo_transparent.png'
 import styles from './Header.module.css'
 
 const Header = () => {
-	const user = useSelector(state => state?.auth?.authData)
+	//const user = useSelector(state => state?.auth?.authData)
+	const user = useSelector(state => state?.auth?.authData) || JSON.parse(localStorage.getItem('profile'))
+	console.log(user)
 	const location = useLocation()
 	//const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
 	const navigate = useNavigate()
