@@ -9,18 +9,6 @@ const Portfolio = (props) => {
 	const [trades, setTrades] = useState([]);
 	const user = useSelector(state => state?.data?.authData)
 
-	/*
-	useEffect(() => {
-		async function fetchTrades() {
-			const { data } = await api.getTrades(user?.result?._id)
-			console.log(data);
-			setTrades(data)
-		}
-		fetchTrades()
-		console.log(trades)
-	}, [])
-	*/
-
 	return (
 		<Card
 			sx={{ height: '100%' }}

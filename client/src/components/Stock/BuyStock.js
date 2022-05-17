@@ -48,8 +48,6 @@ const BuyStock = ({isBuy}) => {
 		newAssets[symbol] = assets[symbol] + quantity
 		dispatch({type: UPDATE_USER, data: {...user, assets: newAssets, result: {...user.result, cash: cash - stockInfo.c * quantity} } })
 		setOpen(true)
-		//console.log({isBuy: e.target.value === 'buy', symbol, quantity, price: stockInfo.c*quantity, date, investor_id: user._id})
-		//api.buyStock({isBuy, symbol, quantity, price: stockInfo.c, date, investor_id: user._id})
 	}
 
 	return (
@@ -67,15 +65,6 @@ const BuyStock = ({isBuy}) => {
 						Buy
 					</Button>
 				</Grid>
-				{
-/*
-				<Grid container item xs={6} justifyContent='center'>
-					<Button value="sell" onClick={handleClick} style={{width: '100px', backgroundColor: "red"}} type="submit" variant="contained">
-						Sell
-					</Button>
-				</Grid>
-*/
-				}
 			</Grid>
 			<h1>{`Total value: ${(stockInfo.c * quantity).toFixed(2)}`}</h1>
 			<Snackbar sx={{width: '100%ft7g '}} open={open} autoHideDuration={6000} onClose={handleClose}>

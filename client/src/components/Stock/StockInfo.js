@@ -45,19 +45,6 @@ const StockInfo = () => {
 		dispatch(getHistoricalData(symbol, value))
 	}
 
-	/*
-	useEffect(() => {
-		async function fetchHistory() {
-			const { data: {data}} = await api.getDailyHistory(symbol)
-			const formattedData = formatHistoricalData(data)
-			setDailyHistory(formattedData)
-		}
-		fetchHistory()
-	})
-						<h1>{`$${stockInfo.c}`}</h1>
-	*/
-
-	//const [symbol, setSymbol] = useState('AAPL')
 	return (
 		<Grid container direction="row">
 			<Grid sx={{borderRight: '1px solid grey'}} item xs={7}>

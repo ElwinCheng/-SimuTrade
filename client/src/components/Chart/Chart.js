@@ -16,16 +16,6 @@ const Chart = (props) => {
 		const date = new Date(tickItem * 1000)
 		return date.toLocaleString('default', { month: 'short'}) + ' ' + date.getDate() + ', ' + date.getFullYear()
 	}
-/*
-	useEffect(() => {
-
-		if (typeof props.data === 'undefined') return
-		console.log('hi')
-		console.log(props.data.reduce( (prev, cur) => cur.c > prev ? cur.c : prev))
-		//console.log(5 * props.data.filter( (prev, cur) => cur > prev ? cur : prev).toString().length)
-		//setMargin(5 * props.data.filter( (prev, cur) => cur > prev ? cur : prev).toString().length)
-	}, [props])
-	*/
 
 	return (
 		<AreaChart

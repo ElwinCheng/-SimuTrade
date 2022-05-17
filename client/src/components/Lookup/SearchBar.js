@@ -1,27 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextField, Autocomplete } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { getQuote, updateSelection } from '../../actions/quotes'
-import * as api from '../../api/index'
+const fuzzysort = require('fuzzysort')
+
 
 const SearchBar = ({period}) => {
 	const [value, setValue] = useState('')
-	const [queries, setQueries] = useState([])
+	const [stocks, setStocks] = useState([])
+	const [closestMatches, setClosestMatches] = useState([])
 
 	const dispatch = useDispatch()
 
+	useEffect(() => {
+		fetch('https://simutrade.herokuapp.com/quotes/query')
+			.then( response => response.json())
+			.then(({data}) => setStocks(data))
+	},[])
+
+
 	const handleChange = async (e, query) => {
 		setValue(query)
+		console.log(query)
 		if (!query) return
-		const { data: { data: { bestMatches }  } } = await api.query(query)
-		const stockSymbols = bestMatches.map(q => q['1. symbol'])
-		setQueries(stockSymbols)
+		const matches = fuzzysort.go(query, stocks, {key: 'displaySymbol'}).slice(0, 10)
+		setClosestMatches(matches)
 	}
 
 	const handleSelect = (e, symbol) => {
 		if (e.target.tagName !== "LI") return
-		dispatch(getQuote(symbol))
-		dispatch(updateSelection(symbol, period))
+		const ticker = symbol.split(" ")[0]
+		dispatch(getQuote(ticker))
+		dispatch(updateSelection(ticker, period))
 	}
 
 	return (
@@ -31,7 +41,7 @@ const SearchBar = ({period}) => {
 				freeSolo 
 				filterOptions={(x) => x} // disable built-in filtering
 				// how to throttle requests?
-				options={queries} 
+				options={closestMatches?.map(d => d.target + ' - ' + d.obj.description)} 
 				onChange={handleSelect}
 				inputValue={value}
 				onInputChange={handleChange}

@@ -11,15 +11,6 @@ const Dashboard = () => {
 		window.location.href="/login"
 	}
 
-	/*
-	useEffect( () => {
-		if (!user) {
-			navigate('/login')
-		}
-		
-	}, [])
-
-	*/
 	return (
 		<Grid container spacing={3}>
 			 <Grid item lg={4} sm={6} xl={3} xs={12}>

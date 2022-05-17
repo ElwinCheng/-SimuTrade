@@ -30,9 +30,7 @@ export const getQuote = async (req, res) => {
 
 export const getQuery = async (req, res) => {
 	try {
-		const { q } = req.query
-
-		const { data } = await ALPHAVANTAGE_API.get(`/query?function=SYMBOL_SEARCH&keywords=${q}&apikey=${ALPHAVANTAGE_API_KEY}`)
+		const { data } = await FINNHUB_API.get(`/stock/symbol?exchange=US&token=${FINNHUB_API_KEY}`)
 		res.status(200).json({ data })
 	} catch (error) {
 		res.status(500).json({ message: "Something went wrong"})
